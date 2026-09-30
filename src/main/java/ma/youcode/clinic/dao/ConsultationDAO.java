@@ -1,5 +1,9 @@
-package main.java.ma.youcode.clinic.dao;
+package ma.youcode.clinic.dao;
 
-public class ConsultationDAO {
-    
+import java.util.Optional;
+import ma.youcode.clinic.entity.Consultation;
+
+public interface ConsultationDAO {
+    Consultation save(Consultation consultation);
+    Optional<Consultation> findByPatientId(long patientId);
 }
