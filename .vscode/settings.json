@@ -14,5 +14,6 @@
       "username": "root",
       "name": "tele_expertise_medicale"
     }
-  ]
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

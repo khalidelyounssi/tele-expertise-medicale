@@ -1,10 +1,10 @@
 USE tele_expertise_medicale;
 
 -- Users
+-- Users
 INSERT INTO utilisateurs (nom, email, mot_de_passe, role) VALUES
-('Karim Alaoui', 'karim@gmail.com', '$2a$10$testpassword1', 'INFIRMIER'),
-('Sara Bennani', 'sara@gmail.com', '$2a$10$testpassword2', 'GENERALISTE');
-
+('Karim Alaoui', 'karim@gmail.com', '$2a$10$1W8gS0vLMDmSxq8kKrPtzedCwqUWLnspw76dS/oOU2UVQQYnFwUZS', 'INFIRMIER'),
+('Sara Bennani', 'sara@gmail.com', '$2a$10$XMN3N0c/ArXMxXt1PO.L2.QdUZW3M2DkoveoVx2PEBRE31jKfqGLK', 'GENERALISTE');
 -- Patients
 INSERT INTO patients (
     nom, prenom, date_naissance, numero_securite_sociale,
