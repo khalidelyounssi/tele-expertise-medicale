@@ -113,4 +113,36 @@ public class JdbcPatientDAO implements PatientDAO {
 
         return patient;
     }
+    @Override
+public List<Patient> patientsEnAttente() {
+
+    String sql = "SELECT p.id, p.nom, p.prenom, p.date_naissance, " +
+            "p.numero_securite_sociale, p.tension_arterielle, " +
+            "p.frequence_cardiaque, p.temperature, " +
+            "p.frequence_respiratoire, p.heure_arrivee " +
+            "FROM patients p " +
+            "WHERE DATE(p.heure_arrivee) = CURDATE() " +
+            "AND NOT EXISTS (" +
+            "SELECT 1 FROM consultations c " +
+            "WHERE c.patient_id = p.id" +
+            ") " +
+            "ORDER BY p.heure_arrivee ASC";
+
+    List<Patient> patients = new ArrayList<>();
+
+    try (Connection connection = dataSource.getConnection();
+         PreparedStatement statement = connection.prepareStatement(sql);
+         ResultSet resultSet = statement.executeQuery()) {
+
+        while (resultSet.next()) {
+            patients.add(mapPatient(resultSet));
+        }
+
+        return patients;
+
+    } catch (SQLException e) {
+        throw new RuntimeException(
+                "Erreur pendant la récupération des patients en attente", e);
+    }
+}
 }
