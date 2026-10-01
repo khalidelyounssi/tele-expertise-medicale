@@ -1,4 +1,3 @@
-package ma.youcode.clinic.dao.jdbc;
 
 import ma.youcode.clinic.dao.PatientDAO;
 import ma.youcode.clinic.entity.Patient;
