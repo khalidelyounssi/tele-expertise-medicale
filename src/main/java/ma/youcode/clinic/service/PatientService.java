@@ -66,4 +66,7 @@ public class PatientService {
             throw new IllegalArgumentException("Le numéro de sécurité sociale est obligatoire");
         }
     }
+    public List<Patient> patientsEnAttente() {
+    return patientDAO.patientsEnAttente();
+}
 }

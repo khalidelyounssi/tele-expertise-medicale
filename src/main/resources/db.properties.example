@@ -1,0 +1,5 @@
+db.url=localhost
+db.port=3306
+db.name=your_database_name
+db.user=your_db_username
+db.password=your_db_password

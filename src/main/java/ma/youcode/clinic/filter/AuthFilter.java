@@ -17,7 +17,8 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+            throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
@@ -43,6 +44,13 @@ public class AuthFilter implements Filter {
 
         if (chemin.startsWith("/consultations") && utilisateur.getRole() != Utilisateur.Role.GENERALISTE) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Accès réservé aux médecins généralistes");
+            return;
+        }
+        if (chemin.startsWith("/generaliste")
+                && utilisateur.getRole() != Utilisateur.Role.GENERALISTE) {
+            response.sendError(
+                    HttpServletResponse.SC_FORBIDDEN,
+                    "Accès réservé aux médecins généralistes");
             return;
         }
 

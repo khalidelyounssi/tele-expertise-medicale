@@ -8,4 +8,5 @@ public interface PatientDAO {
     Patient save(Patient patient);
     List<Patient> findAll();
     Optional<Patient> findById(long id);
+    List<Patient> patientsEnAttente();
 }
