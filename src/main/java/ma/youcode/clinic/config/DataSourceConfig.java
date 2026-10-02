@@ -21,7 +21,7 @@ public class DataSourceConfig {
         if (dataSource == null) {
 
             Properties properties = new Properties();
-            try(InputStream input = new FileInputStream("db.propertirs")){
+            try(InputStream input = DataSourceConfig.class.getClassLoader().getResourceAsStream("db.properties")){
                 properties.load(input);
 
             }catch(IOException e){
@@ -32,7 +32,7 @@ public class DataSourceConfig {
 
             mysqlDataSource.setServerName(properties.getProperty("db.url"));
             mysqlDataSource.setPortNumber(Integer.parseInt(properties.getProperty("db.port")));
-            mysqlDataSource.setDatabaseName(properties.getProperty("db.user"));
+            mysqlDataSource.setDatabaseName(properties.getProperty("db.name"));
             mysqlDataSource.setUser(properties.getProperty("db.user"));
             mysqlDataSource.setPassword(properties.getProperty("db.password"));
 
