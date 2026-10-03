@@ -88,10 +88,10 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void redirigerSelonRole(HttpServletRequest request, HttpServletResponse response, Utilisateur utilisateur) throws IOException {
-        if (utilisateur.getRole() == Utilisateur.Role.INFIRMIER) {
-            response.sendRedirect(request.getContextPath() + "/patients");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/");
-        }
+    if (utilisateur.getRole() == Utilisateur.Role.INFIRMIER) {
+        response.sendRedirect(request.getContextPath() + "/patients");
+    } else {
+        response.sendRedirect(request.getContextPath() + "/generaliste/patients");
     }
+}
 }
